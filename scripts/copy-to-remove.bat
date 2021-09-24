@@ -1,0 +1,1 @@
+pscp -i ../555.ppk ./*.(json) ubuntu@15.236.208.32:/home/ubuntu/server/gtd-bot
