@@ -1,14 +1,9 @@
-import {Telegraf} from 'telegraf';
+import {PersistenceService} from "./services/persistence.service";
 
+const options = require('../options.json')
+import {InboxBot} from "./bots/inbox-bot";
 
-const bot = new Telegraf("1962793096:AAE_QnHCriPN-VTPCCUASA6RMuSpk4EidBU");
+const persistence = new PersistenceService(options.connectionString);
+const inboxBot = new InboxBot(persistence);
 
-bot.on('text', ctx => {
-   ctx.reply(ctx.message.text);
-});
-
-
-
-bot.launch();
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
+console.log('end');
